@@ -3,6 +3,8 @@
 
 ### 1. Signup
 
+***
+
 #### 1.1 Request
 ```
 POST: http://localhost:5000/api/auth/signup
@@ -64,6 +66,8 @@ Body
 }
 ```
 
+***
+
 ### 2. Signin
 #### 2.1 Request
 ```
@@ -98,6 +102,8 @@ Body
 
 ##### 2.2.2 Unauthorized 
 Status: 401
+
+***
 
 ### 3. Logged in user credentials
 

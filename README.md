@@ -1,11 +1,11 @@
 # spring-security-jwt
 
 
-### 1. Signup
+## 1. Signup
 
 ***
 
-#### 1.1 Request
+### 1.1 Request
 ```
 POST: http://localhost:5000/api/auth/signup
 ```
@@ -24,8 +24,8 @@ Body
 }
 ```
 
-#### 1.2 Response
-##### 1.2.1 Success 
+### 1.2 Response
+### 1.2.1 Success 
 Status: 200
 
 Body (Created user id)
@@ -33,7 +33,7 @@ Body (Created user id)
 1
 ```
 
-##### 1.2.2 Email already exists 
+#### 1.2.2 Email already exists 
 Status: 409
 
 Body (Created user id)
@@ -44,7 +44,7 @@ Body (Created user id)
 }
 ```
 
-##### 1.2.3 Email already exists 
+#### 1.2.3 Email already exists 
 Status: 409
 
 Body (Created user id)
@@ -55,7 +55,7 @@ Body (Created user id)
 }
 ```
 
-##### 1.2.4 Bad request
+#### 1.2.4 Bad request
 Status: 400
 
 Body
@@ -68,8 +68,8 @@ Body
 
 ***
 
-### 2. Signin
-#### 2.1 Request
+## 2. Signin
+### 2.1 Request
 ```
 POST: http://localhost:5000/api/auth/signin
 ```
@@ -87,9 +87,9 @@ Body
 }
 ```
 
-#### 2.2 Response
+### 2.2 Response
 
-##### 2.2.1 Success 
+#### 2.2.1 Success 
 Status: 200
 
 Body
@@ -100,14 +100,14 @@ Body
 }
 ```
 
-##### 2.2.2 Unauthorized 
+#### 2.2.2 Unauthorized 
 Status: 401
 
 ***
 
-### 3. Logged in user credentials
+## 3. Logged in user credentials
 
-#### 3.1 Request
+### 3.1 Request
 ```
 GET: http://localhost:5000/api/users/me
 ```
@@ -117,9 +117,9 @@ Header
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQxNTA2MjA4LCJleHAiOjE1NDIxMTEwMDh9.xRU2vmXUvtHmrL_BDKm-rzTKd0Sv8BtPR3AmOO0ZgLnSXIT0EeDh1cN7lvrxM-H2fNuO4vJMJdOXV8By8E4BkQ
 ```
 
-#### 3.2 Response
+### 3.2 Response
 
-##### 3.2.1 Success 
+#### 3.2.1 Success 
 Status: 200
 
 Body
@@ -132,6 +132,6 @@ Body
 ```
 
 
-##### 3.2.2 Unauthorized 
+#### 3.2.2 Unauthorized 
 Status: 401
 

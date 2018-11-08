@@ -1,4 +1,4 @@
-package pl.rmitula.authapp.exception;
+package pl.rmitula.authapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

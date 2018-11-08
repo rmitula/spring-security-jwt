@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import pl.rmitula.authapp.exception.BadRequestException;
 import pl.rmitula.authapp.exception.ConflictException;
-import pl.rmitula.authapp.exception.ErrorResponse;
+import pl.rmitula.authapp.dto.ErrorResponse;
 import pl.rmitula.authapp.exception.NotFoundException;
 
 @RestControllerAdvice

@@ -56,7 +56,7 @@ public class AuthService {
 
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
-        log.info("User with [email: {}] has logged id", userPrincipal.getEmail());
+        log.info("User with [email: {}] has logged in", userPrincipal.getEmail());
 
         return new JwtAuthenticationResponse(jwt);
     }
@@ -64,7 +64,7 @@ public class AuthService {
     public Long registerUser(SignUpRequest signUpRequest) {
 
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
-            throw new ConflictException("Email is already taken");
+            throw new ConflictException("Email [email: " + signUpRequest.getEmail() + "] is already taken");
         }
 
         User user = new User(signUpRequest.getName(), signUpRequest.getEmail(), signUpRequest.getPassword());
@@ -72,7 +72,7 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-                .orElseThrow(() -> new AppException("User Role not set"));
+                .orElseThrow(() -> new AppException("User Role not set. Add default roles to database."));
 
         user.setRoles(Collections.singleton(userRole));
 

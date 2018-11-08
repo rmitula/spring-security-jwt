@@ -25,11 +25,27 @@ import pl.rmitula.authapp.security.JwtAuthenticationFilter;
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+    private static final String[] AUTH_WHITELIST = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**"
+    };
+
     private CustomUserDetailsService customUserDetailsService;
+    private JwtAuthenticationEntryPoint unauthorizedHandler;
 
     @Autowired
-    private JwtAuthenticationEntryPoint unauthorizedHandler;
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtAuthenticationEntryPoint unauthorizedHandler) {
+        this.customUserDetailsService = customUserDetailsService;
+        this.unauthorizedHandler = unauthorizedHandler;
+    }
+
+    public SecurityConfig(boolean disableDefaults, CustomUserDetailsService customUserDetailsService, JwtAuthenticationEntryPoint unauthorizedHandler) {
+        super(disableDefaults);
+        this.customUserDetailsService = customUserDetailsService;
+        this.unauthorizedHandler = unauthorizedHandler;
+    }
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
@@ -82,6 +98,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
 //                .antMatchers("/api/yourEndpoint")
 //                .permitAll()
+                .antMatchers(AUTH_WHITELIST)
+                .permitAll()
                 .anyRequest()
                 .authenticated();
 

@@ -8,6 +8,10 @@ import pl.rmitula.authapp.security.UserPrincipal;
 public class UserService {
 
     public UserSummary getCurrentUser(UserPrincipal userPrincipal) {
-        return new UserSummary(userPrincipal.getId(), userPrincipal.getUsername(), userPrincipal.getName());
+        return UserSummary.builder()
+                .id(userPrincipal.getId())
+                .email(userPrincipal.getEmail())
+                .name(userPrincipal.getName())
+                .build();
     }
 }

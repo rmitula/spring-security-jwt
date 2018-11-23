@@ -1,11 +1,32 @@
 # spring-security-jwt
 
+## Technology stack
+- Java 11
+- Spring Boot
+- Spring Data
+- Spring Security
+- PostgreSQL / H2
+- Maven
+- Log4j
+- Lombok
+- Swagger
 
-## 1. Signup
+## API Documentation
 
-***
+- [Signup](#signup)
+    - [Success](#signup-success)
+    - [Email already exists](#signup-email-already-exists)
+    - [Bad request](#signup-bad-request)
+- [Signin](#signin)
+    - [Success](#signin-success)
+    - [Email not found](#signin-email-not-found)
+    - [Unauthorized](#signin-unauthorized)
+- [Current user](#current-user)
+    - [Success](#current-user-success)
+    - [Unauthorized](#current-user---unauthorized)
 
-### 1.1 Request
+## Signup
+
 ```
 POST: http://localhost:5000/api/auth/signup
 ```
@@ -24,8 +45,7 @@ Body
 }
 ```
 
-### 1.2 Response
-### 1.2.1 Success 
+## Signup success 
 Status: 200
 
 Body (Created user id)
@@ -33,7 +53,7 @@ Body (Created user id)
 1
 ```
 
-#### 1.2.2 Email already exists 
+## Signup email already exists
 Status: 409
 
 Body (Created user id)
@@ -44,18 +64,7 @@ Body (Created user id)
 }
 ```
 
-#### 1.2.3 Email already exists 
-Status: 409
-
-Body (Created user id)
-```
-{
-  "code": 409,
-  "message": "Email is already taken"
-}
-```
-
-#### 1.2.4 Bad request
+## Signup bad request
 Status: 400
 
 Body
@@ -68,8 +77,7 @@ Body
 
 ***
 
-## 2. Signin
-### 2.1 Request
+## Signin
 ```
 POST: http://localhost:5000/api/auth/signin
 ```
@@ -87,9 +95,7 @@ Body
 }
 ```
 
-### 2.2 Response
-
-#### 2.2.1 Success 
+## Signin success 
 Status: 200
 
 Body
@@ -100,14 +106,35 @@ Body
 }
 ```
 
-#### 2.2.2 Unauthorized 
+## Signin email not found
+Status: 404
+
+Body
+```
+{
+  "code": 404,
+  "message": "User not found [email: rmitula@gmail.com]"
+}
+```
+
+## Signin unauthorized 
 Status: 401
 
+Body
+```
+{
+  "timestamp": "2018-11-11T17:37:12.573+0000",
+  "status": 401,
+  "error": "Unauthorized",
+  "message": "Sorry, You're not authorized to access this resource.",
+  "path": "/api/auth/signin"
+}
+```
 ***
 
-## 3. Logged in user credentials
+## Current user
+Logged in user credentials
 
-### 3.1 Request
 ```
 GET: http://localhost:5000/api/users/me
 ```
@@ -117,9 +144,7 @@ Header
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQxNTA2MjA4LCJleHAiOjE1NDIxMTEwMDh9.xRU2vmXUvtHmrL_BDKm-rzTKd0Sv8BtPR3AmOO0ZgLnSXIT0EeDh1cN7lvrxM-H2fNuO4vJMJdOXV8By8E4BkQ
 ```
 
-### 3.2 Response
-
-#### 3.2.1 Success 
+## Current user success 
 Status: 200
 
 Body
@@ -132,6 +157,16 @@ Body
 ```
 
 
-#### 3.2.2 Unauthorized 
+## Current user - unauthorized 
 Status: 401
 
+Body
+```
+{
+  "timestamp": "2018-11-11T17:26:42.886+0000",
+  "status": 401,
+  "error": "Unauthorized",
+  "message": "Sorry, You're not authorized to access this resource.",
+  "path": "/api/users/me"
+}
+```

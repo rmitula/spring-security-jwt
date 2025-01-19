@@ -39,8 +39,8 @@ Content-Type: application/json
 Body
 ``` json
 {
-	"name": "Rafał Mituła",
-	"email": "rmitula@gmail.com",
+	"name": "Jan Kowalski",
+	"email": "email@example.com",
 	"password": "password"
 }
 ```
@@ -90,7 +90,7 @@ Content-Type: application/json
 Body
 ``` json
 {
-	"email": "rmitula@gmail.com",
+	"email": "email@example.com",
 	"password": "password"
 }
 ```
@@ -113,7 +113,7 @@ Body
 ```
 {
   "code": 404,
-  "message": "User not found [email: rmitula@gmail.com]"
+  "message": "User not found [email: email@example.com]"
 }
 ```
 
@@ -151,8 +151,8 @@ Body
 ```
 {
   "id": 1,
-  "username": "rmitula@gmail.com",
-  "name": "Rafał Mituła"
+  "username": "email@example.com",
+  "name": "Jan Kowalski"
 }
 ```
 
